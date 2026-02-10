@@ -3,10 +3,10 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig({
+  base: "/productivity-dashboard/",
   plugins: [
     svelte(),
     VitePWA({
-      base: "/productivity-dashboard/",
       registerType: "autoUpdate",
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,csv}"],
