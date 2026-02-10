@@ -11,7 +11,7 @@ export default defineConfig({
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,csv}"],
       },
-      includeAssets: ["favicon.ico", "apple-touch-icon.png", "mask-icon.svg"],
+      includeAssets: ["assets/**/*"],
       manifest: {
         name: "Productivity Dashboard",
         short_name: "ProdDash",
@@ -19,16 +19,16 @@ export default defineConfig({
         theme_color: "#4f46e5",
         background_color: "#ffffff",
         display: "standalone",
-        scope: "/productivity-dashboard/",
-        start_url: "/productivity-dashboard/",
+        scope: "/",
+        start_url: "/",
         icons: [
           {
-            src: "/productivity-dashboard/assets/icons/icon-192x192.svg",
+            src: "assets/icons/icon-192x192.svg",
             sizes: "192x192",
             type: "image/svg+xml",
           },
           {
-            src: "/productivity-dashboard/assets/icons/icon-512x512.svg",
+            src: "assets/icons/icon-512x512.svg",
             sizes: "512x512",
             type: "image/svg+xml",
           },
