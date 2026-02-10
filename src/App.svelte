@@ -7,7 +7,7 @@
   import "./app.css";
 
   let data = [];
-  let selectedDay = 1;
+  let selectedDay = "2025-07-01";
   let loading = true;
   let error = null;
 
@@ -19,7 +19,7 @@
     try {
       data = await loadData();
       loading = false;
-      updateFormValues(1);
+      updateFormValues(selectedDay);
     } catch (err) {
       error = "Failed to load data. Please try again.";
       loading = false;
@@ -36,14 +36,13 @@
   }
 
   function handleDaySelect(event) {
-    selectedDay = parseInt(event.target.value);
+    selectedDay = event.target.value;
     updateFormValues(selectedDay);
   }
 
   function handleUpdate(event) {
     const { hours, breaks, focus } = event.detail;
 
-    // Update the data array
     data = data.map((day) => {
       if (day.date === selectedDay) {
         return {
@@ -139,9 +138,7 @@
         {#if selectedDayData}
           <div class="productivity-display">
             <span class="label">Calculated Productivity Score:</span>
-            <span class="score"
-              >{selectedDayData.productivity_score.toFixed(1)}</span
-            >
+            <span class="score">{selectedDayData.productivity_score}</span>
           </div>
         {/if}
       </div>

@@ -1,5 +1,7 @@
 export async function loadData() {
-  const response = await fetch(`${import.meta.env.BASE_URL}assets/data.csv`);
+  const response = await fetch(
+    `${import.meta.env.BASE_URL}assets/productivity_metrics.csv`,
+  );
   const csvText = await response.text();
 
   const lines = csvText.trim().split("\n");
@@ -10,10 +12,11 @@ export async function loadData() {
     const row = {};
     headers.forEach((header, index) => {
       const value = values[index];
-      if (header === "date") {
-        row[header] = parseInt(value);
+      if (header.trim() === "productivity_score") {
+        const parsedValue = value.split("\r")[0];
+        row[header.trim()] = parsedValue;
       } else {
-        row[header] = parseFloat(value);
+        row[header.trim()] = value;
       }
     });
     return row;
