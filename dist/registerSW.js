@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('https://kubix90.github.io/productivity-dashboard/sw.js', { scope: 'https://kubix90.github.io/productivity-dashboard/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/productivity-dashboard/sw.js', { scope: '/productivity-dashboard/' })})}
