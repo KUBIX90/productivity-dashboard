@@ -4,11 +4,6 @@ bun.lockb
 .pnp
 .pnp.js
 
-# Build outputs
-dist
-dist-ssr
-*.local
-
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
