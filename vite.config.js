@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     svelte(),
     VitePWA({
-      base: "/productivity-dashboard/",
+      base: "https://kubix90.github.io/productivity-dashboard/",
       registerType: "autoUpdate",
       workbox: {
         globPatterns: ["**/*.{js,css,html,ico,png,svg,csv}"],
