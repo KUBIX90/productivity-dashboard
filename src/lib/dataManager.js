@@ -1,5 +1,5 @@
 export async function loadData() {
-  const response = await fetch("./assets/data.csv");
+  const response = await fetch(`${import.meta.env.BASE_URL}assets/data.csv`);
   const csvText = await response.text();
 
   const lines = csvText.trim().split("\n");
