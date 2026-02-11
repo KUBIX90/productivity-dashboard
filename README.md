@@ -6,9 +6,8 @@ A Progressive Web Application (PWA) built with Svelte and Bun that allows users 
 
 - **Interactive Charts**: Line chart showing productivity over time, bar chart for detailed daily metrics
 - **Real-time Updates**: Sliders and input fields modify data instantly with visual feedback
-- **PWA Support**: Works offline, installable on iPhone/iPad home screen
-- **Tablet-Optimized**: Designed primarily for iPad with large touch targets and tablet-friendly layouts
-- **Data Persistence**: All changes are maintained in memory during the session
+- **PWA Support**: Works offline, installable on desktop & iPhone/iPad home screen
+- **Tablet-Optimized**: Designed for iPad with touch targets and tablet-friendly layout
 
 ## Tech Stack
 
@@ -100,9 +99,10 @@ Productivity Score = (Hours Worked × 10) + (Focus Level × 5) − (Break Minute
 
 ## Future Enhancements
 
-- [ ] Data export to CSV/JSON
-- [ ] Multiple dataset support
+- [ ] Data export to CSV
+- [ ] Multiple dataset support - save configurations in local storage
 - [ ] Animation improvements for chart transitions
 - [ ] Data persistence using localStorage
+- [ ] Export to PDF report
 
 ---
