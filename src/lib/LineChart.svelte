@@ -3,7 +3,7 @@
   import Chart from "chart.js/auto";
 
   export let data = [];
-  export let highlightDay = 1;
+  export let highlightDay = "";
 
   let canvas;
   let chart;
@@ -22,7 +22,14 @@
     chart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: data.map((d) => `Day ${d.date}`),
+        labels: data.map((d) => {
+          const date = new Date(d.date);
+          return date.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+          });
+        }),
         datasets: [
           {
             label: "Productivity Score",

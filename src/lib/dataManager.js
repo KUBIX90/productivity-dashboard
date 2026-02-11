@@ -7,20 +7,23 @@ export async function loadData() {
   const lines = csvText.trim().split("\n");
   const headers = lines[0].split(",");
 
-  return lines.slice(1).map((line) => {
-    const values = line.split(",");
-    const row = {};
-    headers.forEach((header, index) => {
-      const value = values[index];
-      if (header.trim() === "productivity_score") {
-        const parsedValue = value.split("\r")[0];
-        row[header.trim()] = parsedValue;
-      } else {
-        row[header.trim()] = value;
-      }
+  return lines
+    .slice(1)
+    .filter((line) => line.trim() !== "")
+    .map((line) => {
+      const values = line.split(",");
+      const row = {};
+      headers.forEach((header, index) => {
+        const value = values[index];
+        const trimmedHeader = header.trim();
+        if (trimmedHeader === "date") {
+          row[trimmedHeader] = value.trim();
+        } else {
+          row[trimmedHeader] = parseFloat(value);
+        }
+      });
+      return row;
     });
-    return row;
-  });
 }
 
 export function calculateProductivity(hours, focus, breaks) {

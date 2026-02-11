@@ -64,7 +64,11 @@
               title: (items) => items[0].label,
               label: (item) => {
                 const labels = ["hours", "minutes", "out of 10"];
-                return `${item.raw} ${labels[item.dataIndex]}`;
+                const formattedValue =
+                  item.dataIndex === 1
+                    ? Math.round(item.raw)
+                    : item.raw.toFixed(1);
+                return `${formattedValue} ${labels[item.dataIndex]}`;
               },
             },
           },

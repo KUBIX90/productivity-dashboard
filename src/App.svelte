@@ -15,6 +15,17 @@
   let breakMinutes = 60;
   let focusLevel = 7;
 
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date
+      .toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+      .replace(/ /g, " ");
+  }
+
   onMount(async () => {
     try {
       data = await loadData();
@@ -103,7 +114,7 @@
           on:change={handleDaySelect}
         >
           {#each data as day}
-            <option value={day.date}>Day {day.date}</option>
+            <option value={day.date}>{formatDate(day.date)}</option>
           {/each}
         </select>
       </div>
@@ -138,7 +149,9 @@
         {#if selectedDayData}
           <div class="productivity-display">
             <span class="label">Calculated Productivity Score:</span>
-            <span class="score">{selectedDayData.productivity_score}</span>
+            <span class="score"
+              >{selectedDayData.productivity_score.toFixed(1)}</span
+            >
           </div>
         {/if}
       </div>
@@ -157,15 +170,17 @@
         <div class="stat-card card">
           <h3>Best Day</h3>
           <p class="stat-value">
-            Day {data.reduce((max, d) =>
-              d.productivity_score > max.productivity_score ? d : max,
-            ).date}
+            {formatDate(
+              data.reduce((max, d) =>
+                d.productivity_score > max.productivity_score ? d : max,
+              ).date,
+            )}
           </p>
         </div>
         <div class="stat-card card">
           <h3>Total Hours</h3>
           <p class="stat-value">
-            {data.reduce((sum, d) => sum + d.hours_worked, 0)}
+            {data.reduce((sum, d) => sum + d.hours_worked, 0).toFixed(1)}
           </p>
         </div>
       </div>
@@ -189,8 +204,6 @@
     color: white;
     padding: var(--spacing-xl) 0;
     box-shadow: var(--shadow-lg);
-    /* Safe area for iOS notch */
-    padding-top: max(var(--spacing-xl), env(safe-area-inset-top));
   }
 
   .header-content {
@@ -224,8 +237,6 @@
     display: flex;
     flex-direction: column;
     gap: var(--spacing-lg);
-    /* Safe area for iOS home indicator */
-    padding-bottom: max(var(--spacing-lg), env(safe-area-inset-bottom));
   }
 
   .day-selector {
