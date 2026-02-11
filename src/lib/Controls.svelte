@@ -7,6 +7,20 @@
 
   const dispatch = createEventDispatcher();
 
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  const debouncedHandleInput = debounce(handleInput, 300);
+
   function handleInput() {
     dispatch("update", {
       hours: hoursWorked,
@@ -63,7 +77,7 @@
         max="16"
         step="0.5"
         bind:value={hoursWorked}
-        on:input={handleInput}
+        on:input={debouncedHandleInput}
       />
       <button
         class="adjust-btn"
@@ -123,7 +137,7 @@
         max="240"
         step="5"
         bind:value={breakMinutes}
-        on:input={handleInput}
+        on:input={debouncedHandleInput}
       />
       <button
         class="adjust-btn"
@@ -184,7 +198,7 @@
         max="10"
         step="1"
         bind:value={focusLevel}
-        on:input={handleInput}
+        on:input={debouncedHandleInput}
       />
       <button
         class="adjust-btn"
