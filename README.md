@@ -83,7 +83,7 @@ Productivity Score = (Hours Worked × 10) + (Focus Level × 5) − (Break Minute
 
 1. **Svelte + Bun**: Chosen for minimal bundle size and performance, as well as a fast development workflow
 2. **Chart.js**: For its simplicity and faster development time
-3. **Vite PWA Plugin**: Handles service worker generation automatically with Workbox, making offline support trivial to implement
+3. **Vite PWA Plugin**: Handles service worker generation automatically with Workbox, for offline support
 4. **CSS Variables**: Used for theming to ensure consistency and easy customization
 5. **Component Architecture**:
    - Separate chart components for reusability
@@ -104,5 +104,7 @@ Productivity Score = (Hours Worked × 10) + (Focus Level × 5) − (Break Minute
 - [ ] Animation improvements for chart transitions
 - [ ] Data persistence using localStorage
 - [ ] Export to PDF report
+- [ ] Login functionality for security
+- [ ] Unit test dataManager.js
 
 ---
